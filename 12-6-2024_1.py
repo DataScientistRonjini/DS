@@ -12,13 +12,13 @@ for i in range(len(n)):
     else:
         left_str+="0"
         left_set.add(n[i])
-
-for i in range(-1,-(len(n)+1),1):
-    if n[i] in right_set:
+    
+    if n[len(n)-1-i] in right_set:
         right_str+="1"
     else:
         right_str+="0"
-        right_set.add(n[i])
+        right_set.add(n[len(n)-1-i])
+
 print(left_str,"left_str")
 print(right_str,"right_str")
 
