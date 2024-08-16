@@ -6,21 +6,15 @@
 # Input: nums = [1,2,3,4,3]
 # Output: [2,3,4,-1,4]
 
-# nums = [1,2,3,4,3]
-nums=[1,2,1]
-stack=[nums[0]]
+nums=[1,2,3,4,3]
+n=len(nums)
+res=[-1]*n
+stack=[]
 
-for n in range(len(nums)): 
-    if nums[n] > stack[-1]:
-        # stack.pop()
-        stack.append(nums[n])
-    elif nums[n] < stack[-1]:
-        stack.append(-1)
-stack.pop(0)
-if nums[len(nums)-1]>max(stack):
-    stack.append(-1)
-else:
-    stack.append(max(stack))
-
-            
-print(stack,"stack")
+for i in range(2*n):
+    num=nums[i%n]
+    while stack and nums[stack[-1]]<num:
+        res[stack.pop()]=num
+    if i<n:
+        stack.append(i)
+print(res)
